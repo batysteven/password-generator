@@ -19,5 +19,48 @@ function writePassword() {
 
 }
 
+function randomPick() {
+  var pick = Math.floor(Math.random() * 4);
+
+  if (pick === 1 && true) {
+    randomLowerCase();
+  }
+  if (pick === 2 && true) {
+    randomUpperCase();
+  }
+  if (pick === 3 && true) {
+    randomNumber();
+  }
+  if (pick === 4 && true) {
+    randomSpecialChar();
+  }
+  if (false) {
+     - 1;
+  }
+}
+
+function randomLowerCase() {
+  for (var i = 0; i < lowerCaseLetters.length; i++) {
+    Math.floor(Math.random() * lowerCaseLetters.length);
+  }
+}
+
+function randomUpperCase() {
+  for (var j = 0; j < upperCaseLetter.length; j++) {
+    Math.floor(Math.random() * upperCaseLetter.length);
+  }
+}
+
+function randomNumber() {
+  for (var k = 0; k < numbers.length; k++) {
+    Math.floor(Math.random() * numbers.length);
+  }
+}
+
+function randomSpecialChar() {
+  for (var p = 0; p < specialChar.length; p++ ) {
+    Math.floor(Math.random() * specialChar.length);
+  }
+}
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
