@@ -8,22 +8,20 @@ var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
 var specialChar = ["!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "[", "]", "^", "_", "`", "{", "|", "}", "~"];
 
-var passwordLength = 0;
-
 //randomly pick from options based on users response
 function randomPick() {
   var pick = Math.floor(Math.random() * 4);
 
-  if ((pick === 1) && (i === true)) {
+  if ((pick === 0) && (i === true)) {
     randomLowerCase();
   }
-  if ((pick === 2) && (j === true)) {
+  if ((pick === 1) && (j === true)) {
     randomUpperCase();
   }
-  if ((pick === 3) && (k === true)) {
+  if ((pick === 2) && (k === true)) {
     randomNumber();
   }
-  if ((pick === 4) && (p === true)) {
+  if ((pick === 3) && (p === true)) {
     randomSpecialChar();
   }
   if ((i === false) || (j === false) || (k === false) || (p === false) && (q > 0)){
@@ -60,14 +58,53 @@ function randomSpecialChar() {
   }
 }
 
+//ask questions about password and generate
 function generatePassword() {
   var passwordLength = window.prompt(
-    "How long would you like your password to be?");
+    "How long would you like your password to be between 8 - 128 characters long??");
 
-    passwordLength = parseInt(passwordLength);
+    var lowerCaseConfirm = window.confirm("Would you like lower case letters?");
+    if (lowerCaseConfirm) {
+      i = true;
+    }
+    else {
+      i = false;
+    }
 
-    for (var q = 0; q < passwordLength; q++) {
-      randomPick();
+    var upperCaseConfirm = window.confirm("Would you like upper case letters?");
+    if (upperCaseConfirm) {
+      j = true;
+    }
+    else {
+      j = false;
+    }
+
+    var randomNumberConfirm = window.confirm("Would you like numbers?");
+    if (randomNumberConfirm) {
+      k = true;
+    }
+    else {
+      k = false;
+    }
+
+    var randomSpecialConfirm = window.confirm("Would you like special characters?");
+    if (randomSpecialConfirm) {
+      p = true;
+    }
+    else {
+      p = false;
+    }
+
+    if (8 < passwordLength < 128) {
+      passwordLength = parseInt(passwordLength);
+
+      for (var q = 0; q < passwordLength; q++) {
+        randomPick();
+      }
+    }
+    if (8 > passwordLength > 128) {
+      window.alert("Not a valid option");
+      generatePassword();
     }
 
 }
