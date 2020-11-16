@@ -8,6 +8,8 @@ const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
 const specialChar = ["!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "[", "]", "^", "_", "`", "{", "|", "}", "~"];
 
+passwordLength = 0;
+
 //randomly pick from options based on users response
 function randomPick() {
   var pick = Math.floor(Math.random() * 4);
@@ -29,7 +31,7 @@ function randomPick() {
   }
 }
 
-//randomly pick from array
+//randomly pick from array store in localStorage
 function randomLowerCase() {
   const i = Math.floor(Math.random() * lowerCaseLetters.length);
   localStorage.setItem("password", (i, lowerCaseLetters[i]));
@@ -52,13 +54,18 @@ function randomSpecialChar() {
 
 //ask questions about password and generate
 function generatePassword() {
-  var passwordLength = window.prompt(
+  passwordLength = window.prompt(
     "How long would you like your password to be between 8 - 128 characters long??");
 
-    passwordLength = parseInt(passwordLength);
-    if (8 > passwordLength > 128 || passwordLength === "" || passwordLength === null) {
+    if (passwordLength === "" || passwordLength === null) {
       window.alert("Not a valid option");
-      generatePassword();
+      return generatePassword();
+    }
+    //check valid number
+    //passwordLength = parseInt(passwordLength);
+    if (8 > passwordLength > 128) {
+      window.alert("Not a valid option");
+      return generatePassword();
     }
 
     var lowerCaseConfirm = window.confirm("Would you like lower case letters?");
@@ -93,6 +100,7 @@ function generatePassword() {
       p = false;
     }
 
+    //loop to generate password
     for (var q = 0; q < passwordLength; q++) {
       randomPick();
     }
@@ -104,7 +112,7 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.querySelectorAll("#password");
+  var passwordText = document.querySelector("#password");
   passwordText.value = password;
 
 }
