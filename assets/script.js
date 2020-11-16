@@ -33,28 +33,28 @@ function randomPick() {
 function randomLowerCase() {
   for (var i = 0; i < lowerCaseLetters.length; i++) {
     Math.floor(Math.random() * lowerCaseLetters.length);
-    localStorage.setItem("#password", "");
+    localStorage.setItem("password", lowerCaseLetters[i]);
   }
 }
 
 function randomUpperCase() {
   for (var j = 0; j < upperCaseLetter.length; j++) {
     Math.floor(Math.random() * upperCaseLetter.length);
-    localStorage.setItem("#password", "");
+    localStorage.setItem("password", upperCaseLetter[j]);
   }
 }
 
 function randomNumber() {
   for (var k = 0; k < numbers.length; k++) {
     Math.floor(Math.random() * numbers.length);
-    localStorage.setItem("#password", "");
+    localStorage.setItem("password", numbers[k]);
   }
 }
 
 function randomSpecialChar() {
   for (var p = 0; p < specialChar.length; p++ ) {
     Math.floor(Math.random() * specialChar.length);
-    localStorage.setItem("#password", "");
+    localStorage.setItem("password", specialChar[p]);
   }
 }
 
