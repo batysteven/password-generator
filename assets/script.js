@@ -10,6 +10,9 @@ const specialChar = ["!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".",
 
 passwordLength = 0;
 
+//instead of local storage, set var genPassword to collect random genrated items in array for password
+var genPassword = password;
+
 //randomly pick from options based on users response
 function randomPick() {
   var pick = Math.floor(Math.random() * 4);
@@ -34,22 +37,26 @@ function randomPick() {
 //randomly pick from array store in localStorage
 function randomLowerCase() {
   const i = Math.floor(Math.random() * lowerCaseLetters.length);
-  localStorage.setItem("password", (i, lowerCaseLetters[i]));
+  genPassword = genPassword + lowerCaseLetters[i];
+  //localStorage.setItem("password", (i, lowerCaseLetters[i]));
 }
 
 function randomUpperCase() {
   const j = Math.floor(Math.random() * upperCaseLetter.length);
-  localStorage.setItem("password", (j, upperCaseLetter[j]));
+  genPassword = genPassword + upperCaseLetter[j];
+  //localStorage.setItem("password", (j, upperCaseLetter[j]));
 }
 
 function randomNumber() {
   const k = Math.floor(Math.random() * numbers.length);
-  localStorage.setItem("password", (k, numbers[k]));
+  genPassword = genPassword + numbers[k];
+  //localStorage.setItem("password", (k, numbers[k]));
 }
 
 function randomSpecialChar() {
   const p = Math.floor(Math.random() * specialChar.length)
-  localStorage.setItem("password", (p, specialChar[p]));
+  genPassword = genPassword + specialChar[p];
+  //localStorage.setItem("password", (p, specialChar[p]));
 }
 
 //ask questions about password and generate
