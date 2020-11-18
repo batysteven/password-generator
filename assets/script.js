@@ -38,7 +38,11 @@ function randomPick() {
 function randomLowerCase() {
   const i = Math.floor(Math.random() * lowerCaseLetters.length);
   genPassword = genPassword + lowerCaseLetters[i];
+<<<<<<< HEAD
   //console.log(lowerCaseLetters[i]);
+=======
+  //localStorage.setItem("password", (i, lowerCaseLetters[i]));
+>>>>>>> develop
 }
 
 function randomUpperCase() {
@@ -49,7 +53,11 @@ function randomUpperCase() {
 
 function randomNumber() {
   const k = Math.floor(Math.random() * numbers.length);
+<<<<<<< HEAD
   genPassword = genPassword + number[k];
+=======
+  genPassword = genPassword + numbers[k];
+>>>>>>> develop
   //localStorage.setItem("password", (k, numbers[k]));
 }
 
@@ -111,6 +119,10 @@ function generatePassword() {
     for (var q = 0; q < passwordLength; q++) {
       randomPick();
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
     return genPassword;
     //return localStorage.getItem("password");
 }
