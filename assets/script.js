@@ -111,6 +111,9 @@ function generatePassword() {
     for (var q = 0; q < passwordLength; q++) {
       randomPick();
     }
+
+    return genPassword;
+    //return localStorage.getItem("password");
 }
 
 // Get references to the #generate element
