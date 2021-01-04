@@ -31,8 +31,8 @@ function randomPick() {
   if ((pick === 3) && (p === true)) {
     randomSpecialChar();
   }
-  if ((i === false) || (j === false) || (k === false) || (p === false) && (q > 0)){
-    q - 1;
+  if (((pick === 0) && (i === false)) || ((pick === 1) && (j === false)) || ((pick === 2) && (k === false)) || ((pick === 3) && (p === false))) {
+    randomPick();
   }
 }
 
@@ -66,17 +66,12 @@ function generatePassword() {
   passwordLength = window.prompt(
     "How long would you like your password to be between 8 - 128 characters long??");
 
-    if (passwordLength === "" || passwordLength === null) {
-      window.alert("Not a valid option");
-      generatePassword();
-    }
-    //check valid number
-    //passwordLength = parseInt(passwordLength);
-    if (8 > passwordLength > 128) {
-      window.alert("Not a valid option");
-      generatePassword();
-    }
+  //check valid input and password within 8-128
+  if ((passwordLength === "") || (passwordLength === null) || (7 >= passwordLength >= 129)) {
+    window.alert("Not a valid option");
+    generatePassword();
 
+  } else {
     var lowerCaseConfirm = window.confirm("Would you like lower case letters?");
     if (lowerCaseConfirm) {
       i = true;
@@ -114,6 +109,9 @@ function generatePassword() {
       randomPick();
     }
     return genPassword;
+  }
+
+    
 }
 
 function clearPassword() {
