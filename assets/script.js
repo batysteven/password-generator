@@ -10,8 +10,10 @@ const specialChar = ["!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".",
 
 passwordLength = 0;
 
-//instead of local storage, set var genPassword to collect random genrated items in array for password
-var genPassword = password;
+//set var genPassword to collect random generated items in array for password
+var genPassword = "";
+//only pulls value from textarea and not the whole object
+genPassword.value = password;
 
 //randomly pick from options based on users response
 function randomPick() {
@@ -61,18 +63,19 @@ function randomSpecialChar() {
 
 //ask questions about password and generate
 function generatePassword() {
+  $("password").empty();
   passwordLength = window.prompt(
     "How long would you like your password to be between 8 - 128 characters long??");
 
     if (passwordLength === "" || passwordLength === null) {
       window.alert("Not a valid option");
-      return generatePassword();
+      generatePassword();
     }
     //check valid number
     //passwordLength = parseInt(passwordLength);
     if (8 > passwordLength > 128) {
       window.alert("Not a valid option");
-      return generatePassword();
+      generatePassword();
     }
 
     var lowerCaseConfirm = window.confirm("Would you like lower case letters?");
@@ -111,9 +114,7 @@ function generatePassword() {
     for (var q = 0; q < passwordLength; q++) {
       randomPick();
     }
-
     return genPassword;
-    //return localStorage.getItem("password");
 }
 
 // Get references to the #generate element
@@ -121,7 +122,6 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  $("password").empty();
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
