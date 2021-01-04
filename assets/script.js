@@ -63,7 +63,6 @@ function randomSpecialChar() {
 
 //ask questions about password and generate
 function generatePassword() {
-  $("password").empty();
   passwordLength = window.prompt(
     "How long would you like your password to be between 8 - 128 characters long??");
 
@@ -117,11 +116,16 @@ function generatePassword() {
     return genPassword;
 }
 
+function clearPassword() {
+  genPassword = "";
+}
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
+  clearPassword();
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
