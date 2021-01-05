@@ -66,12 +66,20 @@ function generatePassword() {
   passwordLength = window.prompt(
     "How long would you like your password to be between 8 - 128 characters long??");
 
-  //check valid input and password within 8-128
-  if ((passwordLength === "") || (passwordLength === null) || (7 >= passwordLength >= 129)) {
+  //check valid input
+  if ((passwordLength === "") || (passwordLength === null)) {
     window.alert("Not a valid option");
     generatePassword();
+  } 
 
-  } else {
+  //check valid input number between 8-128 and not text or special characters
+  if (isNaN(passwordLength) || passwordLength < 7 || passwordLength > 128) {
+    window.alert("Not a valid option");
+    generatePassword();
+  }
+
+  else {
+    
     var lowerCaseConfirm = window.confirm("Would you like lower case letters?");
     if (lowerCaseConfirm) {
       i = true;
@@ -108,10 +116,8 @@ function generatePassword() {
     for (var q = 0; q < passwordLength; q++) {
       randomPick();
     }
-    return genPassword;
   }
-
-    
+  return genPassword;
 }
 
 function clearPassword() {
